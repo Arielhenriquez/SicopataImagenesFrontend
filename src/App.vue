@@ -1,9 +1,12 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <header>
+    <h3> Sicopata imagenes</h3>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <router-link to="/" class="navbar-brand">Upload image</router-link> |
+      <router-link to="/about" class="navbar-brand">Get image</router-link>
+    </nav>
+  </header>
+  <router-view />
 </template>
 
 <style>
@@ -26,5 +29,13 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+header {
+  background: rgb(5, 37, 91);
+  color: #fff;
+  padding: 8px;
+  text-align: left;
+  font-size: 16px;
 }
 </style>
