@@ -2,9 +2,9 @@
   <div class="home">
     <img alt="Azure logo" src="../assets/azure_logo.jpg">
     <HelloWorld msg="Welcome" />
-    <form>
+    <form @submit.prevent>
       <input type="file" class="btn btn-light" @change="onChange" />
-      <button type="submit" class="btn btn-success" @submit="uploadImage">Upload</button>
+      <button type="submit" class="btn btn-success" @click="uploadImage">Upload</button>
       <p v-if="success === true">{{ message }}</p>
     </form>
   </div>
@@ -28,8 +28,8 @@ export default {
   data() {
     return {
       formFile: "",
-      //message: "",
-      //success: ""
+      message: "",
+      success: ""
     }
   },
 
@@ -39,13 +39,13 @@ export default {
     },
     async uploadImage() {
       const file = new FormData();
-      file.append("formFile", this.formFile.value);
+      file.append("formFile", this.formFile, this.formFile.name);
       await UploadFilesService.upload(file)
         .then((response) => {
           console.log("test");
-          connection.invoke("SendMessage", response.data.uri);
-          // this.message = "Blob uploaded successfully";
-          // this.success.value = true;
+          connection.invoke("SendMessage", response.data);
+          this.message = "Blob uploaded successfully";
+          this.success = true;
 
         })
         .catch((error) => {

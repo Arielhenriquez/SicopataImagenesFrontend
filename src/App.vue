@@ -1,3 +1,6 @@
+<script setup>
+</script>
+
 <template>
   <header>
     <h3> Sicopata imagenes</h3>

@@ -17,6 +17,7 @@ export default {
   setup() {
     const imageUrl = ref("");
     connection.on("ReceiveMessage", (uri) => {
+      console.log(uri);
       imageUrl.value = uri;
     });
 
